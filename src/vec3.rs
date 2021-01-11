@@ -4,7 +4,7 @@ use std::ops::Mul;
 use std::ops::Sub;
 
 #[derive(Debug, Copy, Clone, PartialEq)]
-struct Vec3 {
+pub struct Vec3 {
     x: f64,
     y: f64,
     z: f64,
