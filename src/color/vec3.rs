@@ -5,9 +5,9 @@ use std::ops::Sub;
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Vec3 {
-    x: f64,
-    y: f64,
-    z: f64,
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
 }
 
 impl Add for Vec3 {
@@ -71,10 +71,12 @@ impl Sub for Vec3 {
     }
 }
 
+#[allow(dead_code)]
 fn get_dot_product(vec3_1: Vec3, vec3_2: Vec3) -> f64 {
     return vec3_1.x * vec3_2.x + vec3_1.y * vec3_2.y + vec3_1.z * vec3_2.z;
 }
 
+#[allow(dead_code)]
 fn get_cross_product(vec3_1: Vec3, vec3_2: Vec3) -> Vec3 {
     return Vec3 {
         x: vec3_1.y * vec3_2.z - vec3_1.z * vec3_2.y,
@@ -83,14 +85,17 @@ fn get_cross_product(vec3_1: Vec3, vec3_2: Vec3) -> Vec3 {
     }
 }
 
+#[allow(dead_code)]
 fn get_length_squared (vec3: Vec3) -> f64 {
     return vec3.x * vec3.x + vec3.y * vec3.y + vec3.z * vec3.z;
 }
 
+#[allow(dead_code)]
 fn get_length(vec3: Vec3) -> f64 {
     return get_length_squared(vec3).sqrt();
 }
 
+#[allow(dead_code)]
 fn get_unit_vector(vec3: Vec3) -> Vec3 {
     let vec3_len = get_length(vec3);
     return Vec3 {
