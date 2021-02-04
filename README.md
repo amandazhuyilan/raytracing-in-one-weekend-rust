@@ -1,6 +1,9 @@
 # Raytracing in One Weekend, in Rust
 Following the [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) tutorial in Rust.
 
+https://github.com/amandazhuyilan/raytracing-in-one-weekend-rust/workflows/Rust/badge.svg
+
+0. Study Notes
 At the core, a raytracer sends rays through pixels and computes the color seen in the directions of those rays. The involved steps are:
 1. calculate the ray from eye to the pixel,
 2. determine which ray the object intersects,
