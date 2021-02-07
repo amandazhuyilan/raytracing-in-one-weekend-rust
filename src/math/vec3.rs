@@ -59,7 +59,17 @@ impl Mul<f64> for Vec3 {
     }
 }
 
+impl Mul<Vec3> for f64 {
+    type Output = Vec3;
+
+    fn mul(self, other: Vec3) -> Vec3 {
+        return other * self;
+    }
+
+}
+
 impl Sub for Vec3 {
+    // the "type Output" here is used to passed on to the original Sub function
     type Output = Self;
 
     fn sub(self, other: Self) -> Self {
@@ -72,12 +82,12 @@ impl Sub for Vec3 {
 }
 
 #[allow(dead_code)]
-fn get_dot_product(vec3_1: Vec3, vec3_2: Vec3) -> f64 {
+pub fn get_dot_product(vec3_1: Vec3, vec3_2: Vec3) -> f64 {
     return vec3_1.x * vec3_2.x + vec3_1.y * vec3_2.y + vec3_1.z * vec3_2.z;
 }
 
 #[allow(dead_code)]
-fn get_cross_product(vec3_1: Vec3, vec3_2: Vec3) -> Vec3 {
+pub fn get_cross_product(vec3_1: Vec3, vec3_2: Vec3) -> Vec3 {
     return Vec3 {
         x: vec3_1.y * vec3_2.z - vec3_1.z * vec3_2.y,
         y: vec3_1.z * vec3_2.x - vec3_1.x * vec3_2.z,
@@ -86,17 +96,17 @@ fn get_cross_product(vec3_1: Vec3, vec3_2: Vec3) -> Vec3 {
 }
 
 #[allow(dead_code)]
-fn get_length_squared (vec3: Vec3) -> f64 {
+pub fn get_length_squared (vec3: Vec3) -> f64 {
     return vec3.x * vec3.x + vec3.y * vec3.y + vec3.z * vec3.z;
 }
 
 #[allow(dead_code)]
-fn get_length(vec3: Vec3) -> f64 {
+pub fn get_length(vec3: Vec3) -> f64 {
     return get_length_squared(vec3).sqrt();
 }
 
 #[allow(dead_code)]
-fn get_unit_vector(vec3: Vec3) -> Vec3 {
+pub fn get_unit_vector(vec3: Vec3) -> Vec3 {
     let vec3_len = get_length(vec3);
     return Vec3 {
         x: vec3.x / vec3_len,
@@ -127,8 +137,13 @@ mod tests {
     }
 
     #[test]
-    fn test_mul_f64() {
+    fn test_mul_f64_post() {
         assert_eq! ((Vec3 {x: 1.0, y: 2.0, z: 3.0} * 3.0), Vec3 {x: 3.0, y: 6.0, z: 9.0});
+    }
+
+    #[test]
+    fn test_mul_f64_pre() {
+        assert_eq! ((3.0 * Vec3 {x: 1.0, y: 2.0, z: 3.0}), Vec3 {x: 3.0, y: 6.0, z: 9.0});
     }
 
     #[test]
