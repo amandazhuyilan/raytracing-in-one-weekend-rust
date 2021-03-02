@@ -6,7 +6,7 @@ pub struct Ray {
 }
 
 impl Ray {
-    fn at(&self, t: f64) -> math::Vec3 {
+    pub fn at(&self, t: f64) -> math::Vec3 {
         let ori = self.origin;
         let dir = self.direction;
 
